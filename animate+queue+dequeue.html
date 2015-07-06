@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="jquery.min.js"></script>
+    <title></title>
+</head>
+<style>
+    .main{
+        width: 200px;
+        height: 200px;
+        margin-top: 20px;
+        margin-left: 400px;
+        background: red;
+    }
+</style>
+<body>
+<input type="button" value="test" id="one">
+ <div class="main">
+ </div>
+</body>
+<script>
+    $(document).ready(function(){
+        $('input').click(function(){
+            $('.main').animate({height:400},'slow');
+            $('.main').animate({width:400},'slow');
+            $('.main').queue(function (){
+                $(this).css("background-color","yellow");
+                $(this).dequeue();
+            });
+            $('.main').animate({height:200},'slow');
+            $('.main').animate({width:200},'slow');
+            $('.main').queue(function () {
+                $(this).css("background-color","red");
+            });
+        });
+    });
+</script>
+</html>

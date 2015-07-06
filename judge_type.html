@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>检查变量的类型</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<script language="javascript">
+    name = "刘洪辉";
+    age = 22;
+    array=new Array("1","2","3");
+    document.write('name变量的类型是：',getType(name));
+    document.write('age变量的类型是：',getType(age));
+    document.write('array:：',getType(array));
+    function getType(o) {
+        var _t; return ((_t = typeof(o)) == "object" ?  Object.prototype.toString.call(o).slice(8,-1):_t).toLowerCase();
+    }
+</script>
+</body>
+</html>

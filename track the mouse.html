@@ -1,0 +1,18 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="jquery.min.js"></script>
+
+</head>
+<body>
+<div class="haha"></div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(document).mousemove(function(e){
+            $(".haha").text("X: " + e.pageX + ", Y: " + e.pageY);
+        });
+    });
+
+</script>
+</html>

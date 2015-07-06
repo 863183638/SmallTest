@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+   <ol id="m">
+       <li name="fanxu">1111</li>
+       <li>2222</li>
+       <li>3333</li>
+
+
+   </ol>
+</body>
+<script>
+    var aLi = document.getElementsByTagName('li');
+    var o=document.getElementById("m");
+    var str="";
+    for(var i=aLi.length-1;i>=0;i--) {
+        str = str + "<li>" + aLi[i].innerHTML + "</li>";
+    }
+   o.innerHTML=str;
+</script>
+</html>

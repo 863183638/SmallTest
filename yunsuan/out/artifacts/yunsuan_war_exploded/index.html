@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="jquery.js"></script>
+    <title>加减乘除</title>
+</head>
+<body>
+<div>
+    <input type="radio" value="0" name="radio" checked="checked">加
+    <input type="radio" value="1" name="radio" >减
+    <input type="radio" value="2" name="radio" >乘
+    <input type="radio" value="3" name="radio" >除
+
+</div>
+     <div>  <label>first:<input type="text" id="first"></label></div>
+     <div>  <label>second:<input type="text" id="second"></label>
+             <input type="button" value="OK!" onclick="submit()">
+     </div>
+     <div id="show">  <label>show:</label></div>
+</body>
+<script>
+    var flag,xmlhttp,dizhi;
+    function submit(){
+        var radios=document.getElementsByName("radio");
+        for(var i=0;i<radios.length;i++) {
+            if(radios[i].checked)
+            flag=radios[i].value;
+        }
+        dizhi="Servlet?first="+document.getElementById("first").value+"&second="+document.getElementById("second")
+                        .value+"&flag="+flag;
+        var temp;
+        $.ajax({
+            async: true,
+            url : dizhi,
+            success : function(responseText) {
+                document.getElementById("show").innerHTML="show:"+responseText;
+            }
+        });
+        alert("sdsf");
+    }
+</script>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+</head>
+<style>
+    #draggable{
+        width:400px;
+        height: 400px;
+        background-color: yellow;
+        float:left;
+    }
+    #draggabletwo{
+             width:300px;
+             height: 300px;
+             background-color: red;
+        float:left;
+         }
+    #draggablethree{
+        width:300px;
+        height: 300px;
+        background-color: red;
+        float:left;
+    }
+    #clearright{
+        clear: left;
+    }
+    #drop{
+        width: 100px;
+        height:100px;
+    }
+</style>
+
+<body>
+   <div id="draggable">
+       <p>Drag me!!</p>
+       <ul>
+           <li id="event-start" >"start" invoked <span class="count">0</span>x</li>
+           <li id="event-drag">"drag" invoked <span  class="count">0</span>x</li>
+           <li id="event-stop">"stop" invoked <span  class="count">0</span>x</li>
+       </ul>
+   </div>
+<div id="draggabletwo">
+       <p>this is the part that can drag,this is the part that can drag,this is the part that can drag</p>
+   </div>
+   <div id="draggablethree">
+       <p>this is the part that can't drag,this is the part that can't drag,this is the part that can't drag</p>
+   </div>
+   <div id="clearright">
+       <ul>
+           <li id="tianjia">Drag me down</li>
+       </ul>
+   <ol id="sortable">
+       <li >Item 1</li>
+       <li >Item 2</li>
+       <li >Item 3</li>
+       <li>Item 4</li>
+       <li>Item 5</li>
+   </ol>
+   </div>
+<div id="drop">
+     <p>Drop here!</p>
+</div>
+</body>
+<script>
+    $("#drop").droppable({
+            accept:"#draggabletwo",
+        drop:function(){
+            $(this).find("p").html("ok!alread dropped")
+        }
+    });
+
+
+
+    $( "#sortable" ).sortable({
+        revert: true
+    });
+    $("#tianjia").draggable({
+        revert:"invalid",
+        connectToSortable:"#sortable",
+        helper:"original",
+        stop:function(){
+            $("#")
+        }
+    });
+
+
+    $("#draggabletwo").draggable({handle:"p",snap:"#draggablethree",snapMode:"inner",stack:"#draggabletwo"});
+    $("#draggablethree").draggable({cancel:"p",stack:"#draggablethree"});
+    $("div,p").disableSelection();
+
+
+
+
+   var start=$("#event-start");
+    var drag=$("#event-drag");
+    var stop=$("#event-stop");
+   counts=[0,0,0]
+    $("#draggable").draggable({
+        start:function(){
+             counts[0]++;
+            updatecount(start,counts[0]);
+        },
+        drag:function(){
+            counts[1]++;
+            updatecount(drag,counts[1]);
+        },
+        stop:function(){
+            counts[2]++;
+            updatecount(stop,counts[2]);
+        }
+    });
+    function updatecount(event_target,new_count){
+          $("span",event_target).text(new_count);
+    }
+</script>
+
+</html>

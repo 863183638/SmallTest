@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    body {
+        font-size: 12px;
+        background:#FFFFFF;
+        margin:0px;
+        padding: 0px;
+        text-align: center;
+        color:#000000;
+    }
+    a{
+        color:#666666;
+        display: block;
+        line-height: 1.5em;
+    }
+    a:hover{
+        color:#CC0000;
+    }
+    .news_root{
+        width:255px;
+        height: 134px;
+        text-align: left;
+        margin:0 auto;
+    }
+    .news_header{
+        width:243px;
+        height:16px;
+        vertical-align: top;
+        font-size:14px;
+        padding:6px;
+    }
+    #scrollContainer{
+        widht:245px;
+        margin:2px 5px;
+        overflow:hidden;
+        text-align: left;
+    }
+</style>
+<body>
+  <div class="news_root">
+      <div class="news_header">Headliner</div>
+      <div id="scrollContainer">
+          <div id="scrollContent">
+              <a>linke1</a>
+              <a>linke2</a>
+              <a>linke3</a>
+              <a>linke4</a>
+              <a>linke5</a>
+              <a>linke6</a>
+          </div>
+      </div>
+  </div>
+<div id="one"></div>
+</body>
+<script>
+    var stopscroll=false;
+    var scrollContHeight=95;
+    var scrollContWidth=100;
+    var scrollSpeed=35;
+    var scrollContainer=document.getElementById("scrollContainer");
+    var scrollContent=document.getElementById("scrollContent");
+    do{
+        scrollContainer.appendChild(scrollContent.cloneNode(true));
+    }while(scrollContainer.offsetHeight<scrollContHeight);
+    scrollContainer.style.width=scrollContWidth+"px";
+    scrollContainer.style.height=scrollContHeight+"px";
+    scrollContainer.noWrap=true;
+    scrollContainer.onmouseover=new Function("stopscroll=true");
+    scrollContainer.onmouseout=new Function("stopscroll=false");
+    function init(){
+        scrollContainer.scrollTop=0;
+        setInterval("scrollUp()",scrollSpeed);
+    }
+    init();
+    var currTop=0;
+    function scrollUp(){
+        if(stopscroll==true)return;
+        else {
+            currTop = scrollContainer.scrollTop;
+            scrollContainer.scrollTop += 1;
+            if (currTop == scrollContainer.scrollTop) {
+                scrollContainer.scrollTop = 0;
+                scrollContainer.scrollTop += 1;
+            }
+        }
+    }
+</script>
+</html>

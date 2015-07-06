@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="../jquery.min.js"></script>
+    <script src="../jquery-ui.min.js"></script>
+
+    <title>拼图</title>
+</head>
+<style>
+    td{
+        width: 100px;
+        height:100px;
+    }
+    table{
+        position: absolute;
+        top:100px;
+        right:100px;
+    }
+</style>
+<body>
+<div id="tupian"></div>
+<div id="biaoge">
+    <table border="1"cellspacing="0" cellpadding="0">
+        <tr>
+            <td id="c1"></td><td id="c2"></td>
+        </tr>
+        <tr>
+            <td id="c3"></td><td id="c4"></td>
+        </tr>
+    </table>
+</div>
+</body>
+<script>
+    var pictures=[1,2,3,4];
+    for(var i=0;i<4;i++) {
+        var x=parseInt(Math.random()*pictures.length);
+        var xin=document.createElement("img");
+        xin.setAttribute("src", pictures[x]+".jpg");
+        xin.setAttribute("id", pictures[x]);
+        $("#c"+pictures[x]).droppable({
+            accept: "#"+xin.id
+        });
+        document.getElementById("tupian").appendChild(xin);
+        pictures.splice(x,1);
+    }
+    $("img").draggable({
+        revert:"invalid",
+        snap:true
+    });
+</script>
+
+</html>
