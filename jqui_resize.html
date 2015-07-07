@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>resize</title>
+    <script src="jquery.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+</head>
+<style>
+  #resizeone{
+      width:100px;
+      heigth:100px;
+      border: solid 1px;
+  }
+  #resizetwo{
+      width:100px;
+      heigth:100px;
+      margin-top: 50px;
+      border: solid 1px;
+  }
+  .helper { border: 1px dotted gray; }
+</style>
+<body>
+<div id="resizeone" class="ui-widget-content">
+    <h3>one</h3>
+</div>
+<div id="resizetwo" class="ui-widget-content">
+    <h3>two</h3>
+</div>
+
+
+</body>
+<script>
+    $('#resizeone').resizable({
+       animate:true,
+        //containment:''
+       //maxHeight:400
+        //helper
+        //delay
+        //distance
+        //aspectRatio:5/5
+        helper:"helper",
+        //grid
+        alsoResize:"#resizetwo",
+        //ghost:true
+
+    });
+    $('#resizetwo').resizable({
+    });
+</script>
+</html>
