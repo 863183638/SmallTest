@@ -8,9 +8,9 @@
     name = "刘洪辉";
     age = 22;
     array=new Array("1","2","3");
-    document.write('name变量的类型是：',getType(name));
-    document.write('age变量的类型是：',getType(age));
-    document.write('array:：',getType(array));
+    document.writeln('name变量的类型是：',getType(name));
+    document.writeln('age变量的类型是：',getType(age));
+    document.writeln('array:：',getType(array));
     function getType(o) {
         var _t; return ((_t = typeof(o)) == "object" ?  Object.prototype.toString.call(o).slice(8,-1):_t).toLowerCase();
     }

@@ -2,8 +2,8 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <script src="../jquery.min.js"></script>
-    <script src="../jquery-ui.min.js"></script>
+    <script src="jsku/jquery.min.js"></script>
+    <script src="jsku/jquery-ui.min.js"></script>
 
     <title>拼图</title>
 </head>
@@ -36,7 +36,7 @@
     for(var i=0;i<4;i++) {
         var x=parseInt(Math.random()*pictures.length);
         var xin=document.createElement("img");
-        xin.setAttribute("src", pictures[x]+".jpg");
+        xin.setAttribute("src", "src/"+pictures[x]+".jpg");
         xin.setAttribute("id", pictures[x]);
         $("#c"+pictures[x]).droppable({
             accept: "#"+xin.id

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>selectable</title>
+    <script src="jsku/jquery.min.js"></script>
+    <script src="jsku/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
+</head>
+<style>
+    ul{
+        list-style: none;
+        width: 200px;
+        font-size: 1.4em;
+    }
+    li{
+        margin-top:10px;
+        margin-left: 20px;
+        border: solid 1px;
+        float: left;
+        width: 70px
+    }
+    #selectable .ui-selecting{
+          background-color: #fed22f;
+      }
+    #selectable .ui-selected{
+        background-color: yellow;
+    }
+</style>
+<body>
+<label id="show">你选择的是：</label>
+<ul id="selectable">
+    <li>one</li>
+    <li>two</li>
+    <li>three</li>
+    <li>four</li>
+    <li>five</li>
+    <li>six</li>
+    <li>seven</li>
+    <li>eight</li>
+</ul>
+
+
+</body>
+<script>
+  $('#selectable').selectable({
+      stop:function(){
+        $('#show').html("你选择的是："+$(".ui-selected",this).html());
+      }
+  });
+</script>
+</html>
