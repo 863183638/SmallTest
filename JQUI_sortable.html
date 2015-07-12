@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="jquery.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
+    <title>sortable</title>
+</head>
+<style>
+    #maintab{
+        height:600px;
+    }
+    #sortable li,#sortable2 li{
+        font-size: 1.4em;
+        height:40px;
+        border: solid 1px;
+        margin-top: 20px;
+        width:160px;
+    }
+    .placeholder{
+        width:120px;
+        height:40px;
+        border:dotted 1px yellow;
+        background-color: #66afe9;
+    }
+</style>
+<body>
+<div id="maintab" >
+    <ul>
+        <li><a href="#tabone">contextone</a></li>
+        <li><a href="#tabtwo">contexttwo</a></li>
+    </ul>
+    <div id="tabone">
+    <ul style="list-style-type: none" id="sortable" class="contextsortable">
+        <li>label1one</li>
+        <li class="disable">label1two</li>
+        <li class="item">label1three</li>
+        <li>label1four</li>
+    </ul>
+        </div>
+    <div id="tabtwo">
+    <ul style="list-style-type: none" id="sortable2" class="contextsortable">
+        <li>label2one</li>
+        <li>label2two</li>
+        <li>label2three</li>
+        <li>label2four</li>
+    </ul>
+    </div>
+</div>
+</body>
+<script>
+    $('#sortable').sortable({
+        connectWith:'#sortable2',
+        placeholder:'placeholder'
+    });
+    $('#sortable2').sortable({
+        connectWith:'#sortable',
+        placeholder:'placeholder'
+    });
+    var maintab=$('#maintab').tabs();
+    var maintabitem=$('ul:first li',maintab).droppable({
+        drop:function(event,ui){
+            var item=$(this);
+            var list=$(item.find('a').attr('href')).find('.contextsortable');
+            ui.draggable.hide('slow',function(){
+                maintab.tabs('option','active',maintabitem.index(item));
+                alert(maintabitem.index(item));
+                $(this).appendTo(list).show('slow');
+            })
+        }
+    });
+</script>
+</html>
